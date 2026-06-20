@@ -1,0 +1,233 @@
+/* ============================================================================
+   SignNet-1M — global theme. Modern dark gradient, glassmorphic cards.
+   ========================================================================== */
+
+:root {
+  /* Base surfaces */
+  --bg: #07070d;
+  --bg-2: #0c0c16;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Text */
+  --text: #ecebf5;
+  --text-soft: #b6b4c8;
+  --text-dim: #807e95;
+
+  /* Accents */
+  --accent: #8b5cf6; /* violet */
+  --accent-2: #38bdf8; /* sky */
+  --accent-3: #f472b6; /* pink */
+  --grad: linear-gradient(120deg, #8b5cf6 0%, #6366f1 45%, #38bdf8 100%);
+  --grad-text: linear-gradient(120deg, #c4b5fd 0%, #a5b4fc 40%, #7dd3fc 100%);
+
+  /* Semantic */
+  --gain: #34d399;
+  --gap: #fb7185;
+
+  /* Language accents */
+  --lang-asl: #38bdf8;
+  --lang-csl: #f472b6;
+  --lang-dgs: #fbbf24;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --maxw: 1120px;
+  --nav-h: 64px;
+
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --mono: "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Ambient gradient backdrop fixed behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60rem 60rem at 12% -10%, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(50rem 50rem at 95% 5%, rgba(56, 189, 248, 0.16), transparent 55%),
+    radial-gradient(55rem 55rem at 50% 110%, rgba(244, 114, 182, 0.12), transparent 60%),
+    var(--bg);
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.section-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+  margin-bottom: 0.8rem;
+}
+
+.section-title .grad {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-lead {
+  color: var(--text-soft);
+  font-size: 1.05rem;
+  max-width: 46rem;
+}
+
+/* ---- Cards / glass ---- */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease,
+    background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  background: var(--grad);
+  border: none;
+  color: #0a0a12;
+  box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.6);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 16px 40px -12px rgba(139, 92, 246, 0.8);
+}
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Pills / chips ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-soft);
+}
+
+.lang-asl { --c: var(--lang-asl); }
+.lang-csl { --c: var(--lang-csl); }
+.lang-dgs { --c: var(--lang-dgs); }
+
+/* ---- Numeric / mono ---- */
+.mono {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.4);
+  color: #fff;
+}
+
+/* Scrollbar (webkit) */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.22); background-clip: padding-box; }
