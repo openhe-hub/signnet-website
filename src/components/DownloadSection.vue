@@ -1,5 +1,5 @@
 <script setup>
-import { downloads } from '../data/content.js'
+import { downloads, releasePlan } from '../data/content.js'
 </script>
 
 <template>
@@ -27,12 +27,34 @@ import { downloads } from '../data/content.js'
         >
           <div class="dl-top">
             <span class="dl-icon">{{ d.icon }}</span>
-            <span v-if="d.todo" class="todo">link TODO</span>
           </div>
           <h3>{{ d.title }}</h3>
           <p>{{ d.body }}</p>
           <span class="dl-cta">{{ d.cta }} <span class="arr">→</span></span>
         </a>
+      </div>
+
+      <div class="roadmap glass" v-reveal>
+        <div class="roadmap-head">
+          <p class="section-eyebrow">Release Plan</p>
+          <h3>Open-source roadmap</h3>
+        </div>
+
+        <ol class="timeline">
+          <li
+            v-for="(item, i) in releasePlan"
+            :key="item.date"
+            class="timeline-item"
+            :style="{ transitionDelay: i * 80 + 'ms' }"
+          >
+            <div class="time-dot"></div>
+            <div class="time-date mono">{{ item.date }}</div>
+            <div class="time-body">
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.body }}</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
@@ -58,16 +80,6 @@ import { downloads } from '../data/content.js'
   justify-content: space-between;
 }
 .dl-icon { font-size: 2.4rem; }
-.todo {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #fbbf24;
-  border: 1px dashed rgba(251, 191, 36, 0.5);
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-}
 .dl h3 { font-size: 1.3rem; margin: 1rem 0 0.6rem; }
 .dl p { color: var(--text-soft); font-size: 0.93rem; flex: 1; }
 .dl-cta {
@@ -80,7 +92,80 @@ import { downloads } from '../data/content.js'
 }
 .dl:hover .arr { transform: translateX(4px); }
 .arr { transition: transform 0.18s ease; }
+
+.roadmap {
+  margin-top: 1.5rem;
+  padding: 1.6rem;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) 1fr;
+  gap: 1.5rem;
+}
+.roadmap-head .section-eyebrow {
+  margin-bottom: 0.45rem;
+}
+.roadmap h3 {
+  font-size: 1.25rem;
+}
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 0.4rem;
+  bottom: 0.45rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent), var(--accent-3));
+  opacity: 0.55;
+}
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1rem;
+  padding: 0 0 1.15rem 1.7rem;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+.time-dot {
+  position: absolute;
+  left: 0;
+  top: 0.42rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.14);
+}
+.time-date {
+  color: var(--accent-2);
+  font-size: 0.88rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.time-body h4 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+.time-body p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
 @media (max-width: 800px) {
   .dl-grid { grid-template-columns: 1fr; }
+  .roadmap {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
 }
 </style>

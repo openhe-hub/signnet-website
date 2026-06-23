@@ -15,9 +15,29 @@ import StatCard from './StatCard.vue'
       </h1>
       <p class="subtitle">{{ meta.subtitle }}</p>
 
-      <p class="authors">
-        {{ meta.authors }} &nbsp;·&nbsp; {{ meta.institution }}
-      </p>
+      <div class="author-block" aria-label="Authors and affiliations">
+        <p class="author-line">
+          <span
+            v-for="(author, i) in meta.authors"
+            :key="author.name"
+            class="author"
+          >
+            <span v-if="author.prefix" class="author-prefix">{{ author.prefix }}</span>
+            {{ author.name }}<sup>{{ author.refs.join(',') }}</sup><span v-if="i < meta.authors.length - 1">,</span>
+          </span>
+        </p>
+
+        <p
+          v-for="inst in meta.institutions"
+          :key="inst.n"
+          class="institution-line"
+        >
+          <sup>{{ inst.n }}</sup>
+          <span>{{ inst.name }}</span>
+        </p>
+
+        <p class="email-line mono">{{ meta.emails.join(', ') }}</p>
+      </div>
 
       <div class="cta">
         <a class="btn btn-primary" :href="links.paper" target="_blank" rel="noopener">
@@ -104,10 +124,55 @@ import StatCard from './StatCard.vue'
   color: var(--text-soft);
   font-weight: 500;
 }
-.authors {
-  margin-top: 1rem;
-  color: var(--text-dim);
-  font-size: 0.95rem;
+.author-block {
+  margin-top: 1.25rem;
+  color: var(--text-soft);
+  text-align: center;
+  max-width: 67rem;
+}
+.author-line {
+  margin: 0 auto 0.9rem;
+  font-size: clamp(1.02rem, 1.9vw, 1.35rem);
+  line-height: 1.35;
+  color: var(--text);
+  font-weight: 500;
+}
+.author {
+  display: inline;
+  white-space: nowrap;
+}
+.author + .author {
+  margin-left: 0.22em;
+}
+.author-prefix {
+  margin-right: 0.22em;
+}
+.author sup,
+.institution-line sup {
+  font-size: 0.62em;
+  line-height: 0;
+  margin-left: 0.08em;
+  vertical-align: super;
+  color: var(--text);
+}
+.institution-line {
+  margin: 0.08rem 0 0;
+  color: var(--text-soft);
+  font-size: clamp(0.95rem, 1.45vw, 1.12rem);
+  line-height: 1.25;
+}
+.institution-line sup {
+  display: inline-block;
+  width: 1.3em;
+  margin: 0 0.45em 0 0;
+  text-align: right;
+  color: var(--text-soft);
+}
+.email-line {
+  margin: 0.55rem 0 0;
+  color: var(--text);
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  font-weight: 700;
 }
 .cta {
   margin-top: 1.8rem;

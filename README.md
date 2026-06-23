@@ -33,12 +33,11 @@ npm run preview  # serve the production build locally
 - `public/assets/` — figures (copied from the paper `figures/`) and `demo.mp4`
   (extracted from the supplementary zip).
 
-## TODO before publishing
+## Pending before publishing
 
-The following are placeholders — search for `TODO` in `src/data/content.js`:
+The following links are intentionally pending in `src/data/content.js`:
 
-- [ ] **Links** (`links` object): `paper`, `arxiv`, `github`, `huggingface`.
-- [ ] **Authors / institution** (`meta` object) — currently "Anonymous Authors".
-- [ ] **BibTeX** (`bibtex`) — update author list and any final venue details.
+- [ ] **Links** (`links` object): `arxiv`, `huggingface`.
+- [ ] **BibTeX** (`bibtex`) — update any final venue details.
 
 Demo video and all figures are already wired up.

@@ -42,7 +42,7 @@ async function copyBibtex() {
 
       <p class="legal">
         Dataset released under a non-commercial license with a standardized data card.
-        Website template © the authors. Replace placeholder links before publishing.
+        Website © the authors.
       </p>
     </div>
   </footer>

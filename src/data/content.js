@@ -1,16 +1,13 @@
 // =============================================================================
 // SignNet-1M — single source of truth for all site content.
 // All experimental numbers are taken verbatim from the ECCV 2026 paper.
-//
-// TODO(links): replace the placeholder URLs below with the real ones before
-// publishing the site.
 // =============================================================================
 
 export const links = {
-  paper: '#', // TODO: link to camera-ready / arXiv PDF
-  arxiv: '#', // TODO: arXiv abstract page
-  github: '#', // TODO: https://github.com/<org>/SignNet-1M
-  huggingface: '#', // TODO: https://huggingface.co/datasets/<org>/SignNet-1M
+  paper: 'assets/signnet-1m-paper.pdf',
+  arxiv: '#',
+  github: 'https://github.com/openhe-hub/SignNet-1M',
+  huggingface: '#',
   video: 'assets/demo.mp4',
 }
 
@@ -19,8 +16,20 @@ export const meta = {
   subtitle:
     'Large-Scale Multilingual Sign Language Video Dataset with Downstream Benchmarks',
   venue: 'ECCV 2026',
-  authors: 'Anonymous Authors', // TODO: replace with real author list
-  institution: 'Anonymous Institution', // TODO: replace with affiliation(s)
+  authors: [
+    { name: 'Zhewen He', refs: ['1'] },
+    { name: 'Junyi Hu', refs: ['1'] },
+    { name: 'Haomian Huang', refs: ['1'] },
+    { name: 'Zhenhua Li', refs: ['1', '2'] },
+    { name: 'Yu-Shen Liu', refs: ['3'] },
+    { name: 'Yi Fang', refs: ['1', '2'], prefix: 'and' },
+  ],
+  institutions: [
+    { n: '1', name: 'New York University Abu Dhabi, UAE' },
+    { n: '2', name: 'ChatSign Technology' },
+    { n: '3', name: 'Tsinghua University, China' },
+  ],
+  emails: ['zh3510@nyu.edu', 'yf23@nyu.edu'],
 }
 
 export const heroStats = [
@@ -287,7 +296,6 @@ export const downloads = [
     body: '~1M augmented clips with sentence-level translations, gloss annotations (DGS/CSL), and augmentation metadata (factor axis + severity). Released under a non-commercial license with a standardized data card.',
     cta: 'Browse the dataset',
     href: links.huggingface,
-    todo: true,
   },
   {
     icon: '💻',
@@ -295,14 +303,32 @@ export const downloads = [
     body: 'Augmentation pipeline (3DGS rendering, diffusion editing, post-rendering), the Orig / Zero-shot / Trained benchmark protocol, evaluation scripts, and training configs for all backbones.',
     cta: 'View the repository',
     href: links.github,
-    todo: true,
+  },
+]
+
+export const releasePlan = [
+  {
+    date: '2026.Jun',
+    title: 'Sample Release',
+    body: 'Open-source sample dataset and core 3DGS code.',
+  },
+  {
+    date: '2026.Jul',
+    title: 'ASL Release',
+    body: 'Open-source the full ASL dataset and complete 3DGS code.',
+  },
+  {
+    date: '2026.Sept',
+    title: 'Full Release',
+    body: 'Open-source the full dataset and complete generation, translation, and evaluation code.',
   },
 ]
 
 export const bibtex = `@inproceedings{signnet1m2026,
   title     = {SignNet-1M: Large-Scale Multilingual Sign Language Video
                Dataset with Downstream Benchmarks},
-  author    = {Anonymous Authors},
+  author    = {He, Zhewen and Hu, Junyi and Huang, Haomian and Li, Zhenhua
+               and Liu, Yu-Shen and Fang, Yi},
   booktitle = {European Conference on Computer Vision (ECCV)},
   year      = {2026}
 }`

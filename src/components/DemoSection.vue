@@ -2,7 +2,7 @@
 import { links, sampleFigures } from '../data/content.js'
 import { ref } from 'vue'
 
-const poster = 'assets/samples.png'
+const poster = 'assets/demo-poster.jpg'
 const lightbox = ref(null)
 function open(fig) { lightbox.value = fig }
 function close() { lightbox.value = null }
