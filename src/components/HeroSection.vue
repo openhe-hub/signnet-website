@@ -44,7 +44,7 @@ import StatCard from './StatCard.vue'
           📄 Paper
         </a>
         <a class="btn" :href="links.arxiv" target="_blank" rel="noopener">
-          arXiv
+          📚 arXiv
         </a>
         <a class="btn" :href="links.github" target="_blank" rel="noopener">
           💻 Code
