@@ -37,7 +37,7 @@ npm run preview  # serve the production build locally
 
 The following links are intentionally pending in `src/data/content.js`:
 
-- [ ] **Links** (`links` object): `arxiv`, `huggingface`.
+- [ ] **Links** (`links` object): `huggingface`.
 - [ ] **BibTeX** (`bibtex`) — update any final venue details.
 
 Demo video and all figures are already wired up.

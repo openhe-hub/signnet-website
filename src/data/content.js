@@ -5,7 +5,7 @@
 
 export const links = {
   paper: 'assets/signnet-1m-paper.pdf',
-  arxiv: '#',
+  arxiv: 'https://arxiv.org/abs/2606.24361',
   github: 'https://github.com/openhe-hub/SignNet-1M',
   huggingface: '#',
   video: 'assets/demo.mp4',
